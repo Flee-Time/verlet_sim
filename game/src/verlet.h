@@ -80,7 +80,7 @@ public:
                     float dist2 = v.x * v.x + v.y * v.y;
                     float min_distance = particle.radius + otherParticle.radius;
 
-                    if (v.x < 30.0f && v.y < 30.0f)
+                    if (v.x < min_distance + 5.0f && v.y < min_distance + 5.0f)
                     {
                         if (dist2 < min_distance * min_distance) {
                             float distance = sqrt(dist2);
