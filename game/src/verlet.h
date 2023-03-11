@@ -38,6 +38,19 @@ public:
         m_particles.push_back(particle);
     }
 
+    void deleteParticle()
+    {
+        auto it = std::find_if(m_particles.begin(), m_particles.end(), [](const auto& particle)
+            {
+                return CheckCollisionCircles(particle.position, particle.radius, GetMousePosition(), 2.0f);
+            });
+
+        if (it != m_particles.end())
+        {
+            m_particles.erase(it);
+        }
+    }
+
     void update(float deltaTime)
     {
         for (auto& particle : m_particles)

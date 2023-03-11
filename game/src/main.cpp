@@ -28,7 +28,7 @@ int main(void)
 
     ParticleSystem particleSystem(pRadius);
     Rectangle menuBox = { 10,10,300,150 };
-    Rectangle infoBox = { GetScreenWidth() - 380,10,370,100 };
+    Rectangle infoBox = { GetScreenWidth() - 380,10,370,150 };
 
     while (!WindowShouldClose())
     {
@@ -60,6 +60,10 @@ int main(void)
         DrawText("Hold", GetScreenWidth() - 370, 80, 20, WHITE);
         DrawText("Right click", GetScreenWidth() - 317, 80, 20, RED);
         DrawText("to disable gravity.", GetScreenWidth() - 205, 80, 20, WHITE);
+
+        DrawText("Press", GetScreenWidth() - 370, 110, 20, WHITE);
+        DrawText("Middle Mouse Button", GetScreenWidth() - 300, 110, 20, RED);
+        DrawText("to delete an object.", GetScreenWidth() - 370, 130, 20, WHITE);
 
         if (numParticles < 100)
         {
@@ -114,6 +118,11 @@ int main(void)
             if (IsMouseButtonUp(MOUSE_BUTTON_RIGHT))
             {
                 rMouse = false;
+            }
+
+            if (IsMouseButtonPressed(MOUSE_BUTTON_MIDDLE))
+            {
+                particleSystem.deleteParticle();
             }
         }
         else
