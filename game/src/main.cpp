@@ -14,6 +14,7 @@ int main(void)
     //--------------------------------------------------------------------------------------
     const int screenWidth = 1920;
     const int screenHeight = 1080;
+    float simTime = 0.03;
     float pRadius = 20.0f;
     int numParticles = 0;
     bool menuOpen = false;
@@ -41,10 +42,10 @@ int main(void)
         if (!rMouse)
         {
             //Add Gravity to all particles
-            particleSystem.addVelocity({ 0.0f, 9.8f }, GetFrameTime());
+            particleSystem.addVelocity({ 0.0f, 9.8f }, simTime);
         }
 
-        particleSystem.update(GetFrameTime());
+        particleSystem.update(simTime);
         particleSystem.draw();
 
         DrawRectangleRec(infoBox, { 70,70,70,80 });
@@ -69,7 +70,7 @@ int main(void)
         {
             numParticles++;
             particleSystem.addParticle({ pRadius + 50, (float)GetScreenHeight() / 5 }, pRadius, rColor);
-            particleSystem.addVelocity({ 10.0f, 1.0f }, GetFrameTime());
+            particleSystem.addVelocity({ 10.0f, 1.0f }, simTime);
         }
 
         if (IsKeyPressed(KEY_F1))
